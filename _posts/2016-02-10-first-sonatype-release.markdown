@@ -8,6 +8,8 @@ categories: sonatype release
 I have finally created a non-snapshot version of jtransc.
 First release version is 0.0.1.
 
+[You can find it here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jtransc%22)
+
 Uploading releases to sonatype requires several steps.
 
 And I'm going to document them so other people can benefit from what I have learned
@@ -27,7 +29,7 @@ You can find a guideline for this [here](http://central.sonatype.org/pages/choos
 
 In order to publish to sonatype, you need to add their repositories to the distributionManagement section.
 
-```
+{% highlight xml %}
 <distributionManagement>
     <repository>
         <id>sonatype-staging</id>
@@ -38,11 +40,11 @@ In order to publish to sonatype, you need to add their repositories to the distr
         <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
     </snapshotRepository>
 </distributionManagement>
-```
+{% endhighlight %}
 
 In order to be able to download dependencies from there:
 
-```
+{% highlight xml %}
 <repositories>
     <repository>
         <id>sonatype.oss.snapshots</id>
@@ -56,14 +58,14 @@ In order to be able to download dependencies from there:
         </snapshots>
     </repository>
 </repositories>
-```
+{% endhighlight %}
 
 ## Configuring servers
 
 You will have to edit `$user/.m2/settings.xml` in order to configure your user/password from sonatype.
 You can use plain password or user tokens that you can grab from [Sonatype Nexus Repo](https://oss.sonatype.org/).
 
-```
+{% highlight xml %}
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
@@ -90,7 +92,7 @@ You can use plain password or user tokens that you can grab from [Sonatype Nexus
     <profiles/>
     <activeProfiles/>
 </settings>
-```
+{% endhighlight %}
 
 ## Publishing snapshots
 
@@ -112,7 +114,7 @@ You can find [a guide for these requirements, here](http://central.sonatype.org/
 
 You must ensure that your `pom.xml` has at least these sections:
 
-```
+{% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -156,37 +158,33 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
   </dependencies>
 
 </project>
-```
+{% endhighlight %}
 
 ### sign with pgp
 
 In my case never used PGP. In OSX you must install it `brew gpg`.
 
-```
-gpg --gen-key
-```
+`gpg --gen-key`
 
 Your key must be RSA 2048-bit
 
-```
-gpg --armor --export alice@cyb.org
-```
+`gpg --armor --export alice@cyb.org`
 
-```
+{% highlight xml %}
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v0.9.7 (GNU/Linux)
 Comment: For info see http://www.gnupg.org
 
 [...]
 -----END PGP PUBLIC KEY BLOCK-----
-```
+{% endhighlight %}
 
 You will have to upload the public key block to one public server. Mine was:
 [http://keyserver.ubuntu.com:11371/pks/add](http://keyserver.ubuntu.com:11371/pks/add)
 
 In your pom.xml you will have to add:
 
-```
+{% highlight xml %}
 <build><plugins>
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -202,15 +200,13 @@ In your pom.xml you will have to add:
     </executions>
 </plugin>
 </plugins></build>
-```
+{% endhighlight %}
 
 It will request your password while performing `mvn deploy`.
 
 To avoid having to type your password everytime, you can:
 
-```
-mvn clean deploy -Dgpg.passphrase=yourpassphrase
-```
+`mvn clean deploy -Dgpg.passphrase=yourpassphrase`
 
 Though this will put your password in `.bash-history` and similar files.
 
@@ -218,7 +214,7 @@ Though this will put your password in `.bash-history` and similar files.
 
 In my case, with kotlin I have the following plugins:
 
-```
+{% highlight xml %}
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-source-plugin</artifactId>
@@ -248,8 +244,23 @@ In my case, with kotlin I have the following plugins:
         </execution>
     </executions>
 </plugin>
-```
+{% endhighlight %}
 
 ## releasing staged artifacts
 
 You can see jtransc [pom.xml file](https://github.com/jtransc/jtransc/blob/master/pom.xml).
+
+You have to go to sonatype nexus: [https://oss.sonatype.org/](https://oss.sonatype.org/)
+
+At the sidebar: Sonatype (TM) -> Build Promotion -> Staging Repositories
+
+After the `mvn deploy` you will be able to see there your release.
+You have to select it, and check at the bottom file viewer if it's all ok.
+In the activity tab you will be able to see if there were problems validating your release
+(all the requirements I put above).
+
+Then you have to select your release, and press the close button above.
+
+After that, your release will be closed, and you will be able to press the release button.
+
+In the case you did something wrong, you should press the drop button instead.
