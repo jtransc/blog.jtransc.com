@@ -1,7 +1,6 @@
 ---
 layout: post
-title:  "Version 0.0.3"
-categories: sonatype release
+title:  "Release 0.0.3"
 ---
 
 I have just released version [0.0.3](https://github.com/jtransc/jtransc/tree/0.0.3). And it will be soon at maven central.

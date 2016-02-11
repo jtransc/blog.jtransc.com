@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "First sonatype release"
-categories: sonatype release
 ---
 
 I have finally created a non-snapshot version of jtransc.
