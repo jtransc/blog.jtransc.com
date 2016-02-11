@@ -1,14 +1,13 @@
 ---
 layout: post
 title:  "First sonatype release"
-date:   2016-02-10 15:34:07 +0100
 categories: sonatype release
 ---
 
 I have finally created a non-snapshot version of jtransc.
 First release version is 0.0.1.
 
-[You can find it here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jtransc%22)
+[You can find it here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jtransc%22l)
 
 Uploading releases to sonatype requires several steps.
 
