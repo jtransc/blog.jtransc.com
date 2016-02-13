@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Release 0.0.4"
+---
+
+I have just released version [0.0.4](https://github.com/jtransc/jtransc/tree/0.0.4). And it will be soon at maven central.
+
+This version improves jtransc-game and adds mouse and key events.
+Along with this version I have included a working tic-tac-toe very simple game made using kotlin.
+That I have tested on **html5**, **flash** and **android c++** (and should work on **ios** too).
+No viewport resizing yet, but this milestone enables a playable game without sound.
+
+You can grab the [tic-tac-toe demo here](https://github.com/jtransc/jtransc-examples/tree/master/tic-tac-toe-kotlin).
+
+In order to compile, you must have **maven**, **haxe** and **lime**. You can follow the instructions in `README.md` to compile it.
+
+<iframe src="/img/tictactoe-0.0.4/js/index.html" width="640" height="480"></iframe>
