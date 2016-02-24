@@ -1,0 +1,85 @@
+---
+layout: post
+title:  "Release 0.1.0 and new annotations"
+---
+
+I have just released version [0.1.0](https://github.com/jtransc/jtransc/tree/0.1.0). And it will be soon at maven central.
+
+This version decouples media library from core to the optional library [jtransc-media](https://github.com/jtransc/jtransc-media).
+Also enables partial haxe interoperability and has lots of cleanups and simplifications.
+Now there are no hardcoded haxe mappings anywhere (replacements of java functions from haxe functions) so it is more extensible
+and easier to work with.
+
+Now there are [some more annotations](https://github.com/jtransc/jtransc/tree/0.1.0/jtransc-rt-core/src/jtransc/annotation/haxe) that you can use in JTransc.
+
+## New WIP maven plugin to create library definitions
+
+jtransc 0.1.0 is released along a new maven plugin that allows you to create
+a `jar` file with all the definitions from an haxe library.
+This will allow you to call custom haxe libraries.
+
+You can see examples using it here:
+
+* [jtransc-media-imports-flash](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-flash/pom.xml)
+* [jtransc-media-imports-lime](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-lime/pom.xml)
+
+This is a WIP, but already generates valid jar files so you can see haxe classes, enums, abstracts and interfaces from java.
+
+## @HaxeMethodBody
+
+This annotation replaces the java or kotlin method body when targetting haxe with jtransc.
+So when calling from java it will run the java body, but when compiling with jtransc it will use
+the code embedded in the string.
+In haxe body parameters are named like: `p0`, `p1`, `p2`, `p3`... Not keeping original names.
+Also haxe strings need to be wrapped `HaxeNatives.str` transforms an haxe String into a java one,
+and `HaxeNatives.toNativeString` for the reversal.
+You can find [`HaxeNatives.hx` here](https://github.com/jtransc/jtransc/blob/0.1.0/jtransc-rt/resources/HaxeNatives.hx), also you can examine generated code to understand the ABI.
+
+![](/img/0.1.0/haxe-method-body.png)
+
+## @HaxeRemoveField and @HaxeAddMembers
+
+When creating custom haxe classes, we can use `@HaxeRemoveField` in order to remove a field from class when no required.
+Also if we need add custom members (fields or methods) to the generated class, we can use `@HaxeAddMembers` annotation.
+This allows to create code that works in java but that have an optimized version in generated haxe code.
+
+![](/img/0.1.0/haxe-remove-field.png)
+
+## @HaxeCustomMain, @HaxeAddFiles and @HaxeAddLibraries
+
+In order to support complex code, we have three more annotations.
+If the class is referenced in your project's working class tree.
+
+![](/img/0.1.0/haxe-link-libraries.png)
+
+### @HaxeCustomMain
+
+This annotation allows you to define how your main class will be. This is a template. For example lime code requires your
+main class to extends `lime.appApplication`. Inside that string you have several variables that are replaced
+`$entryPointPackage`, `$entryPointSimpleName`, `$inits`, `$mainClass`, `$mainMethod`.
+
+### @HaxeAddFiles
+
+This annotation allows you to include plain haxe fiels in your project. So you can
+reference and create complex code. In order for this to work you have to add those files
+into your library/program `resources` folder.
+
+## @HaxeAddLibraries
+
+In order to be able to use other haxe libraries, you can use this annotation.
+This will add a `-lib lib:version` parameter when calling haxe,
+just in the case the class containing the annotation is referenced.
+
+## A couple of mains:
+
+jtransc-media requires you to have a couple of mains.
+One called from plain java, and another compiled when using jtransc.
+You can see a kotlin example here:
+
+![](/img/0.1.0/haxe-several-mains.png)
+
+And that's it.
+Generated code is still pretty preliminary in terms of size and quality.
+But still a great step.
+
+
