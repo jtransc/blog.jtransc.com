@@ -12,19 +12,6 @@ and easier to work with.
 
 Now there are [some more annotations](https://github.com/jtransc/jtransc/tree/0.1.0/jtransc-rt-core/src/jtransc/annotation/haxe) that you can use in JTransc.
 
-## New WIP maven plugin to create library definitions
-
-jtransc 0.1.0 is released along a new maven plugin that allows you to create
-a `jar` file with all the definitions from an haxe library.
-This will allow you to call custom haxe libraries.
-
-You can see examples using it here:
-
-* [jtransc-media-imports-flash](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-flash/pom.xml)
-* [jtransc-media-imports-lime](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-lime/pom.xml)
-
-This is a WIP, but already generates valid jar files so you can see haxe classes, enums, abstracts and interfaces from java.
-
 ## @HaxeMethodBody
 
 This annotation replaces the java or kotlin method body when targetting haxe with jtransc.
@@ -64,7 +51,7 @@ This annotation allows you to include plain haxe fiels in your project. So you c
 reference and create complex code. In order for this to work you have to add those files
 into your library/program `resources` folder.
 
-## @HaxeAddLibraries
+### @HaxeAddLibraries
 
 In order to be able to use other haxe libraries, you can use this annotation.
 This will add a `-lib lib:version` parameter when calling haxe,
@@ -77,6 +64,21 @@ One called from plain java, and another compiled when using jtransc.
 You can see a kotlin example here:
 
 ![](/img/0.1.0/haxe-several-mains.png)
+
+## New WIP maven plugin to create library definitions
+
+jtransc 0.1.0 is released along a new maven plugin that allows you to create
+a `jar` file with all the definitions from an haxe library.
+This will allow you to call custom haxe libraries.
+
+You can see examples using it here:
+
+* [jtransc-media-imports-flash](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-flash/pom.xml)
+* [jtransc-media-imports-lime](https://github.com/jtransc/jtransc-media/blob/0.1.0/jtransc-media-imports-lime/pom.xml)
+
+This is a WIP, but already generates valid jar files so you can see haxe classes, enums, abstracts and interfaces from java.
+
+![](/img/0.1.0/lime-imports.png)
 
 And that's it.
 Generated code is still pretty preliminary in terms of size and quality.
