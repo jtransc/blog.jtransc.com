@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Release 0.1.0 and new annotations"
+title:  "JTransc 0.1.0 and new annotations"
 ---
 
 I have just released version [0.1.0](https://github.com/jtransc/jtransc/tree/0.1.0). And it will be soon at maven central.
