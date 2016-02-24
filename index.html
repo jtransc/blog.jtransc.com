@@ -8,12 +8,22 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <li style="border-bottom: 1px solid #ddd;">
 
-        <h2>
+        <h2 style="margin:0;">
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+
+        <div style="margin-bottom:16px;">
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} :: <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" class="disqus-comment-count" data-disqus-identifier="{{ post.id }}">No comments</a></span>
+        </div>
+
+        <p>
+          {{ post.excerpt | strip_html | strip_newlines }}
+        </p>
+        <p>
+          <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a>
+        </p>
       </li>
     {% endfor %}
   </ul>
@@ -21,3 +31,5 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+<script id="dsq-count-scr" src="//jtransc.disqus.com/count.js" async></script>
