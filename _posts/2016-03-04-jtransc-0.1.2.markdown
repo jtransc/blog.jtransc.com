@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "JTransc 0.1.2"
+---
+
+I have just released version [0.1.2](https://github.com/jtransc/jtransc/tree/0.1.2). And it is already available at maven central.
+
+## Fixes
+
+* Fixed casting negative integers to longs.
+* Fixed some arithmetic cases in code generation.
+* Lots of cleanups and fixes.
+* Fixed maven plugin not detecting transitive dependencies.
+* Lots of reflection fixes.
+* Detect generic types for creating the class working set.
+* Fixed bug with field name collision that had $ in their names.
+
+## Implemented APIs
+
+* Implemented stack traces.
+* Implemented `Enum.valueOf`.
+* Implemented `SecureRandom` using javascript crypto capabilities when available.
+* Implemented lots of missing native methods: in String, StringBuilder, Short, Integer, Long, Float, Double, AbstractSet, AbstractCollection...
+* Some initial java8 work (partial support for lambdas), not full invokedynamic support
+(still missing default methods).
+
+## Extras
+
+* Added `JTranscSystem.debugger` to stop debugger in supported implementations like javascript.
+* Enable wrapped native values using `jtransc.JTranscWrapped`.
+* `@JTranscReferenceClass`
+* `@HaxeAddAssets`
+* Install haxe libraries when required.
+* Added array access bound checking.
+* Added `-status` to jtransc main to generate a report of the RT.
+* Removed dead code elimination for now.
+* Simplified a lot haxe code generator.
+* Simplified booleans generated code and removed dynamic casts from code generation.
+* Small runtime optimizations.
+
+Compilation times are higher and file size bigger, but less prone to bugs for the moment.
+Next version will include a new version of DCE.
+
+## *JTranscSystem.debugger()* and *JTranscSystem.assert2(boolean)*
+
+While developing sometimes we want the debugger to stop when some conditions are met.
+These functions will do the work. It will use javascript `debugger;` statement.
+
+## *@HaxeAddAssets()*
+
+In order to include assets in jtransc libraries, in places where we cannot specify
+an assets folder, (for example a system font in a library), now we have this annotation.
+That allows to add assets to the output from a resource embedded into a jar.
+
+## Improvements in jtransc-media
+
+jtransc-media project now supports virtual screen sizes, and key events.
