@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "JTransc 0.1.3"
+---
+
+I have just released version [0.1.3](https://github.com/jtransc/jtransc/tree/0.1.3). And it is already available at maven central.
+
+## Fixes
+
+* `Objects.equals` and `Objects.hashCode`.
+* Fixed `GenericListIterator.remove()`.
+* `Matcher.matches()` should now test the whole string.
+* Fixed `Field.get` and `Field.set` reflection with primitives.
+* Fixed `Class.isAssignableFrom(class)` with interfaces in as3.
+* Fixed `String.valueOf(long)`.
+
+## Java RT implemented stuff
+
+* Implemented `AbstractStringBuilder`, `StringBuilder` and `StringBuffer` missing methods.
+* Implemented missing `Short`, `Integer`, `Long`, `Float` and `Double` native methods.
+* Implemented some `Character` missing methods.
+* Implemented all `String` missing methods.
+* Implemented some `Objects` methods.
+* Implemented `Arrays.binarySearch()`.
+* Implemented `Field.set*` and `Field.get*` methods.
+* Implemented some more `Date` methods and constructors.
+* Partially implemented `SimpleDateFormat`.
+
+## Optimizations
+
+* Some misc optimizations.
+* `ArrayList<T>` native implementation (now uses haxe Array<Dynamic> which uses target native arrays or vectors).
+* Optimized some `Objects` methods.
+* Some `Math` and `StrictMath` methods inlined (redirections to haxe `Math`).
+* Improved `System.out` and `System.err`.
+
+## Additions to jtransc-rt-core
+
+* Added `JTranscSystem.elapsedTime()`.
+* `JTranscSystem.debugger`, now works on flash too.
+
+## Changes
+
+* Lime now doesn't embed assets, so it load them asynchronously.
+* `HaxeBaseArray.checkBounds` just enabled on debug builds
+* Lots of simplifications
+* Removed `ClassMappings` code. Now just uses `@Haxe` annotations.
+
+## Reporter
+
+Now jtransc runtime reporter, also gives information about methods marked as native
+which don't have `@HaxeMethodBody` annotation, to identify missing functionality.
