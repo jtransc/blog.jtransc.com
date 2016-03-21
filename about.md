@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-html_title: <i class="fa fa-info-circle"></i> About
+html_title: <i class="fa fa-info-circle" style="font-size:1.5em;"></i>
 permalink: /about/
 ---
 
