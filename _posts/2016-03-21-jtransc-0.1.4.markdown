@@ -1,0 +1,49 @@
+---
+layout: post
+title:  "JTransc 0.1.4 - Pre-Inception!"
+---
+
+I have just released version [0.1.4](https://github.com/jtransc/jtransc/tree/0.1.4). And it is already available at maven central.
+
+This version allows jtransc to transcompile itself (it compiles, though still not fully working; can't make two levels of inception).
+
+![jtransc-pre-inception](/img/0.1.4/jtransc-pre-inception.png)
+
+## Fixes
+
+* Fixed Short.swap16
+* Fixed HaxeNatives.toNativeString when string is null
+* Fixed travis; now executing tests (before it was not executing tests and just checking that it compiles)
+* Fixed compilation with decapitalized classes (haxe enforces capitalized class names)
+* Fixed a bug that prevented java constructor dynamic instantiaton to not call haxe constructor and thus constant fields not being initialized
+* Fix infinite recursion on constructors (now constructors and static constructors prepend class name to its name, so you it call the constructor it require without inheritance interfering)
+* Fixed FastMemory byte order running on JVM
+* Fixed a compilation bug with two synthetic fields with the same name in the same class
+* Fixed comparisons between an interface and java.lang.Object
+* Fixed interfaces containing one or more Object methods
+* Added try, catch and finally keywords, so with kotlin or other JVM language allowing arbitrary names, it will work
+
+## Java RT implemented stuff
+
+* Implemented Object.clone
+* Implemented System.exit and System.getenv
+* Implemented System: emptySet, emptySortedSet, emptyNavigableSet, emptyList, emptyMap, emptySortedMap, emptyNavigableMap, singleton, list, frequency and disjoint
+* Implemented lots of FileSystem stuff
+* Implemented System.getProperty with default, System.setProperty and System.cleanProperty
+* Implemented ZipFile stuff
+* Added some java.util.concurrent collections and stuff (without actually being concurrent since jtransc is single threaded)
+
+## Additions to jtransc-rt-core
+
+* JTranscSyncIO make abstract implementations, so they are easily overridable
+* Implemented synchronous IO in nodejs
+* Added Inflater implementation
+* Support HaxeNatives.rethrow in some more targets
+* Unified FileSystem stuff into something that can be overriden from jtransc and with a default implementation that currently works on nodejs
+
+## Misc
+
+* Updated jtransc-main
+* Updated to kotlin 1.0.1
+* Added inception project, so you can compile jtransc using jtransc (potentially recursively)
+* Added much more tests
