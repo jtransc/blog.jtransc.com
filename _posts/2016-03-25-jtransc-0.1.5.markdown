@@ -1,0 +1,101 @@
+---
+layout: post
+title:  "JTransc 0.1.5 - Inception, JNA and more!"
+---
+
+I have just released version [0.1.5](https://github.com/jtransc/jtransc/tree/0.1.4). And it is already available at maven central.
+
+This version allows jtransc to transcompile itself, and transcompiled version (tested with c++ and javascript works and are able to compile other stuff).
+
+![](/img/0.1.5/0.png)
+
+Furthermore, this version implements Dynamic Proxies and includes initial/partial support for including C++ sources and FFI-JNA.
+
+![](/img/0.1.5/1.png)
+
+![](/img/0.1.5/2.png)
+
+![](/img/0.1.5/3.png)
+
+## Optimizations
+
+* Hugely optimized StringBuilder on huge builds using haxe StringBuf that populates an array of chunks until toString that just makes a .join("")
+
+## Fixes
+
+* JTransc mojo should resolve compile + runtime scopes
+* Fixed new String(char[], int, int) and String(int[], int, int) constructors
+* Fixed HaxeIO not compiling on non-js targets
+* Fixed HaxeNatives.getenvs
+* Fixed HaxeNatives.rethrow on other targets than js
+* Fixed createBuffer on non js targets
+* Fixed Double.isFinite and Double.isInfinite
+* Fixed Double.toString on infinites
+* Fixed Double.toString
+* Fixed JTranscSystem for php/python targets
+* Fixed == and != operators on flash on two different instance types
+* Fixed CMPL str
+* Fixed Mem on flash target
+
+## Implemented stuff
+
+* Lots of java.security.* dummy classes
+* Now you can use synchronous IO and filesystem calls in node.js and sys targets
+* Added java.lang.ThreadLocal
+* Added java.lang.annotation.Inherited
+* Added dummy java.net.URLClassLoader
+* Support zip flag DescriptorUsedMask
+* Implemented Collections.enumeration
+* Implemented Hashtable using HashMap
+* Implemented fast versions for HashMap, HashSet, LinkedMap, LinkedSet, TreeMap and TreeSet
+* Some more work on collections #22
+* Added com.sun.jna.Native to rt, overriding jna so you can use it normally
+* Dynamic Proxies with one interface (java.lang.reflect.Proxy)
+* Some work on java.lang.reflect.Array
+* Implemented some Character missing methods
+* Implemented process builder on sys targets
+* Implemented Class.getComponentType()
+* Added java.lang.ExceptionInInitializerError
+
+## JTransc additions
+
+* HaxeNatives implemented mapToObject, added iteratorToArray
+* Some more JTranscSystem.is*
+* HaxeNatives.checkNotNull that check null pointers in every field access or call in debug mode
+  and throws NullPointerException when required.
+* Some more JTtranscSyncIO methods
+* Improved HaxeNatives.outputLog and errorLog on sys targets
+* Added StdCall annotation so you can call windows functions
+* Added HaxeMeta annotation
+* Some work on dynamic loading (LoadLibrary + dlopen)
+
+## Misc
+
+* Moved lot of stuff from HaxeNatives to specified places
+* Some cleanups
+* Moved ReentrantLock to the right package
+* Updated soot to 2.5.0-2
+* Some work implementing io stuff on sys targets
+
+## JTranscWrapped
+
+This class allows to wrap any haxe object into something that Java can use.
+Now it includes "get", "set", "invoke" and "toString" methods to access fields, call methods
+or serialize that haxe object.
+
+## @HaxeMeta
+
+This annotation allows you to specify haxe meta (raw haxe annotations) directly.
+That allows you to define some hxcpp special annotations and call C/C++ code from it.
+
+## @StdCall
+
+When defining JNA libraries, you must use this annotation to specify functions that uses the
+`__stdcall` convention. Since function calls are determined at compile-time and we are not going
+to generate dynamic code, we need this annotation.
+
+## New examples
+
+* [EMBED AND CALL C using HaxeMeta](https://github.com/jtransc/jtransc-examples/blob/master/cpp/src/example/Test.java)
+* [Use JNA to call window's kernel32 functions](https://github.com/jtransc/jtransc-examples/blob/master/ffi/src/main/java/BeepExample.java)
+* [Inception: transcompile jtransc with jtransc](https://github.com/jtransc/jtransc-examples/blob/master/inception/pom.xml)
