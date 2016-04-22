@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "JTransc 0.2.0 - ASM backend and optimization!"
+---
+
+I have just released version [0.2.0](https://github.com/jtransc/jtransc/tree/0.2.0). And it is already available at maven central.
+
+## ASM backend replaces SOOT backend:
+
+This version replaces SOOT backend with a custom ASM-based backend.
+It constructs larger expressions on the fly avoiding lots of temps and nodes so usually it generates much less local variables.
+Most of time it already eliminates locals keeping this and parameters. So unconditional getters and small functions calling other functions are now one-liner without locals.
+Additionally it is usually ~6x times faster than the soot backend.
+
+## Optimizations:
+Also I have changed the AST to support updates and locals to be able to keep write and read references, and with that I have bring some optimizations.
+
+It still doesn't generate a SSA form, so just partial optimizations yet.
+
+Didn't get rid of simulating branching with `while + switch` yet. But next versions probably will fix this at least for simple cases with reductible CFG (await/async transforms will still use while + switch).
+
+## gdx backend for jtransc
+
+I have started a gdx backend for jtransc:
+https://github.com/jtransc/gdx-backend-jtransc
+
+It is already able to compile Cuboc gdx demo successfully.
+And using lime it should be able to be compiled on javascript and C++ targets.
+A flash stage3d emulation is on the works so you will be able to generate flash with libgdx.
+
+## Future debugger
+
+I have started some debugging support. The idea is to emulate a jvm debugger server that connects to a javascript/flash server and that uses sourcemaps to translate stuff and be able to debug without external plugins just in your favourite IDE.
+It is still a working progress.
+
+## openjdk
+
+This version still uses a custom jdk. But probably next version will replace the custom jdk with the openjdk once (with its license) and will just put some core classes before the openjdk loader. This will require dead code elimination to avoid being overkilling.
+
+## Fixes
+
+* Fixed multidimensional arrays
+* Fixed annidated annotations not being referenced
+* Bug with boolean arrays (that are considerered byte arrays) in static targets like flash
+* Improved getting timestamp on js target
+
+## Implemented
+
+* Support annotations in method/constructor arguments
+* java.io.InputStreamReader
+* java.util.concurrent.atomic.AtomicBoolean
+
+## Improvements
+
+* Improved HaxeNatives.cast2
+* Added N class (that will replace HaxeNatives) to reduce output size
+* String literals now doesn't generate garbage (just uses a constant string pool per class)
+* Optimized internal string Indenter so it is much faster while generating code (Fixed #19 Improve String literals)
+* Improved debugging arrays
+* Small improvements for integer division on c++ targets
+* Harcoded remove kotlin's checkParameterIsNotNull to avoid overhead (I will move it from here later)
+
+## Updates
+
+* Added boolean embedResources to configuration flags to send that to lime targets so you can access resources synchronously at the cost of preloading all assets.
+* Changed how reflection info is generated
+* Updated kotlin to 1.0.1-2
