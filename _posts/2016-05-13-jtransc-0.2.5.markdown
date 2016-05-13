@@ -1,0 +1,130 @@
+---
+layout: post
+title:  "JTransc 0.2.5 - ASM backend and optimization!"
+---
+
+I have just released version [0.2.5](https://github.com/jtransc/jtransc/tree/0.2.5). And it is already available at maven central.
+
+There have been several versions in between: *0.2.1*, *0.2.2*, *0.2.3* and *0.2.4*.
+
+## Minitemplates
+
+JTransc now include a simile template engine used in several places where you can embed or include haxe code or configuration files or build commands.
+
+That template engine is very similar to twig or my project [atpl.js](https://github.com/soywiz/atpl.js) (without inheritance) and with less default filters, tags and features.
+
+The engine allows to put expressions inside `{{ expression }}`.
+Or specify tags inside `{% tag info %}` some tags could be opened and closed `{% tag info %}`content`{% end %}`
+
+Tags supported:
+`{% if condition %}...{% end %}`
+`{% if condition %}...{% else %}...{% end %}`
+`{% for var in expression %}...{% end %}`
+`{% set var = expression %}`
+`{% debug expression %}`
+
+Filters:
+`|capitalize`
+`|upper`
+`|lower`
+`|trim`
+`|join`
+`|file_exists`
+
+Custom tags for class/method/field references:
+
+`{% SINIT class %}`
+`{% CLASS class %}`
+`{% CONSTRUCTOR class %}`
+`{% SMETHOD class:methodname:descriptor %}` -- descriptor is optional if there is only one method with that name
+`{% METHOD class:methodname:descriptor %}`
+`{% SFIELD class:fieldname %}`
+`{% FIELD class:fieldname %}`
+
+## JTransc gdx backend preview uploaded to maven central
+
+I have uploaded gdx backend to maven central. It is now to just work on javascript for now (C++ versions will display a black screen). I will probably fix this in next version.
+
+## New minimized code and templates
+
+The new `minimizeNames` maven configuration allows to rename automatically all fields, methods and classes for others with smaller names. Ideally for generating smaller javascript (up to 50% in some cases without uglifying it or removing dead code) while keeping reflection working.
+
+This change requires all haxe embedded code to change how classes, methods and fields are referenced. Since you won't know which name it is going to be generated, because minimized names are not predictable and are different from non-minimized names, there is a new template system used in JTransc.
+
+Core, jtransc-media and gdx backend have been updated to use the new template system.
+
+## Lime decoupled from haxegen
+
+The use of Minitemplates + some new annotations, allows anyone to create custom haxe-based targets like the lime one. Now it will be possible to create other targets.
+
+You can adapt your own engine that uses other command line or that require a project file with these annotations.
+`@HaxeAddFilesTemplate`, `@HaxeAddFilesBeforeBuildTemplate`, `@HaxeCustomMain`, `@HaxeAddSubtargetList`, `@HaxeCustomBuildCommandLine`, `@HaxeAddLibraries`
+
+You can find a working example here:
+https://github.com/jtransc/jtransc-media/blob/0.2.5/jtransc-media-lime/src/com/jtransc/media/lime/JTranscLime.java#L9
+
+## Easier native bodies for several targets
+
+Supported repeatable annotations HaxeMethodBody* now uses simple HaxeMethodBody with a flexible target Customizable haxe subtargets
+
+`@HaxeMethodPre("Prefix for all targets")`
+`@HaxeMethodBody(target = "js", value = "specific javascript code")`
+`@HaxeMethodBody(target = "swf", value = "specific flash code")`
+`@HaxeMethod("Optional default code for other targets, or will use java code if method not marked as native")`
+`@HaxeMethodPost("Postfix for all targets")`
+
+## Improved Haxe native interoperability
+
+Classes marked with `@JTranscNativeClass("fqhaxename")` are expected to exists as native haxe classes.
+
+Added `@HaxeNativeConversion` that allows to convert between haxe and java types when calling native haxe code.
+
+Support calling haxe classes and methods directly.
+
+Primitives, String, byte[] (haxe Bytes) and InputStream (haxe Input) are converted from/to directly.
+
+Right now instantiation is limited.
+
+See `HaxeNativeCallTest` for examples.
+
+## Changes, additions and fixes
+
+* Implemented java8 default methods
+* Fixed execution of external programs that some times failed
+* Some optimizations
+* Fixed some bugs on flash target
+* Support unicode strings 16-bit on all targets
+* Optimized annotation queries for shorter compilation times
+* Added shorter array aliases
+* `@JTranscInvisible` annotation now works as expected
+* Added JTranscKotlinReflectStripper class that when referenced will make invisible/strip reflection information for lot of huge the static classes from the kotlin runtime.
+* Added `@JTranscInvisibleExternal` to specify fqnames that will be invisible at the reflection level.
+* Removed specific lime support (now it should be flexible enough to support lime with annotations)
+* Method ids are now local to class instead of global (that should prevent class recompilation in c++)
+* Added analyzer flag to enable/disable haxe analyzer
+* Prevent non-runtime annotations to write in the output
+* Renamed `@HaxeAddFiles` to `@HaxeAddFilesTemplate` and added `@HaxeAddFilesRaw`
+* Renamed arrays types to HaxeArray*
+* Added PHP test and fix PHP run with suffix /index.php
+* Test raw memory
+* Changed fast memory APIs to use integers instead of byte and short so they are unsigned and prevent casting
+* Added HaxeMethodBody* methods to avoid explicit conditional macros in native body
+* Added N.getTime() and JTranscSystem.fastTime() that uses a double instead of a long
+* Added MutableFloat32x4 class that will use SIMD when available
+* Some refactorings
+* Fixed some bugs in fast memory APIs
+* Added `@JTranscKeepName` to keep name even when minimizing
+* mojo: relooper and minimizeNames flags
+* Some work optimizing AST methods (detecting some simple ifs for graphs without loops)
+* Added JTranscArray.copyInterprete
+* Added several JTranscArray swizzling methods
+* Started intelliJ jtransc plugin
+* Some work on intelliJ debugging with node.js v8 json-based protocol that probably will work with chrome too
+* Added sourcemaps por hx generated files to allow double source maps
+* Added custom simple JSON implementation to avoid depending on vert.x or gson
+* Fixed sign extension when targeting PHP 64-bits
+* Travis and tests do not require previous installation of rt and rt-core. You can change stuff and launch tests immediately.
+* Improved release process to be faster and less error-prone.
+* Moved/unified jtransc root files to com.jtransc package.
+* Some ast-level optimizations.
+* Lots of fixes, simplifications and improvements
