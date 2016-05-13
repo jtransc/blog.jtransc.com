@@ -7,40 +7,6 @@ I have just released version [0.2.5](https://github.com/jtransc/jtransc/tree/0.2
 
 There have been several versions in between: *0.2.1*, *0.2.2*, *0.2.3* and *0.2.4*.
 
-## Minitemplates
-
-JTransc now include a simile template engine used in several places where you can embed or include haxe code or configuration files or build commands.
-
-That template engine is very similar to twig or my project [atpl.js](https://github.com/soywiz/atpl.js) (without inheritance) and with less default filters, tags and features.
-
-The engine allows to put expressions inside `{{ expression }}`.
-Or specify tags inside `{% tag info %}` some tags could be opened and closed `{% tag info %}`content`{% end %}`
-
-Tags supported:
-`{% if condition %}...{% end %}`
-`{% if condition %}...{% else %}...{% end %}`
-`{% for var in expression %}...{% end %}`
-`{% set var = expression %}`
-`{% debug expression %}`
-
-Filters:
-`|capitalize`
-`|upper`
-`|lower`
-`|trim`
-`|join`
-`|file_exists`
-
-Custom tags for class/method/field references:
-
-`{% SINIT class %}`
-`{% CLASS class %}`
-`{% CONSTRUCTOR class %}`
-`{% SMETHOD class:methodname:descriptor %}` -- descriptor is optional if there is only one method with that name
-`{% METHOD class:methodname:descriptor %}`
-`{% SFIELD class:fieldname %}`
-`{% FIELD class:fieldname %}`
-
 ## JTransc gdx backend preview uploaded to maven central
 
 I have uploaded gdx backend to maven central. It is now to just work on javascript for now (C++ versions will display a black screen). I will probably fix this in next version.
@@ -52,6 +18,53 @@ The new `minimizeNames` maven configuration allows to rename automatically all f
 This change requires all haxe embedded code to change how classes, methods and fields are referenced. Since you won't know which name it is going to be generated, because minimized names are not predictable and are different from non-minimized names, there is a new template system used in JTransc.
 
 Core, jtransc-media and gdx backend have been updated to use the new template system.
+
+## Minitemplates
+
+JTransc now include a simile template engine used in several places where you can embed or include haxe code or configuration files or build commands.
+
+That template engine is very similar to twig or my project [atpl.js](https://github.com/soywiz/atpl.js) (without inheritance) and with less default filters, tags and features.
+
+The engine allows to put expressions inside `{{ expression }}`.
+Or specify tags inside `{{ '{%' }} tag info %}` some tags could be opened and closed `{{ '{%' }} tag info %}`content`{{ '{%' }} end %}`
+
+### Tags supported:
+`{{ '{%' }} if condition %}...{{ '{%' }} end %}`
+`{{ '{%' }} if condition %}...{{ '{%' }} else %}...{{ '{%' }} end %}`
+`{{ '{%' }} for var in expression %}...{{ '{%' }} end %}`
+`{{ '{%' }} set var = expression %}`
+`{{ '{%' }} debug expression %}`
+
+### Filters:
+`|capitalize`
+`|upper`
+`|lower`
+`|trim`
+`|join`
+`|file_exists`
+
+### Custom tags for class/method/field references:
+
+*S* stands for Static.
+
+### SINIT
+Static Init (static initializer call, required before accessing static methods or fields):
+`{{ '{%' }} SINIT class %}`
+
+### CLASS
+Replaces with the full class name.
+`{{ '{%' }} CLASS class %}`
+
+### CONSTRUCTOR
+Replaces with the full constructor you will have to add () and arguments required.
+`{{ '{%' }} CONSTRUCTOR class:descriptor %}`
+
+### SMETHOD/METHOD/SFIELD/FIELD
+Replaces with method or field names, in the case of S (static tags) it will include the class name. So SMETHOD is a shortcut for `{{ '{%' }} CLASS class %}.{{ '{%' }} SMETHOD class:methodname %}`.
+`{{ '{%' }} SMETHOD class:methodname:descriptor %}` -- descriptor is optional if there is only one method with that name
+`{{ '{%' }} METHOD class:methodname:descriptor %}`
+`{{ '{%' }} SFIELD class:fieldname %}`
+`{{ '{%' }} FIELD class:fieldname %}`
 
 ## Lime decoupled from haxegen
 
