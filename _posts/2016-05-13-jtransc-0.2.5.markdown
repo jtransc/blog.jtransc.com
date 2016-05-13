@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JTransc 0.2.5 - ASM backend and optimization!"
+title:  "JTransc 0.2.5 - Custom targets, Minitemplates, minimization, optimizations and more!"
 ---
 
 I have just released version [0.2.5](https://github.com/jtransc/jtransc/tree/0.2.5). And it is already available at maven central.
