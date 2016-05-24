@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "JTransc 0.2.6 - Gradle support and fixed gdx backend"
+---
+
+I have just released version [0.2.6](https://github.com/jtransc/jtransc/tree/0.2.6). And it is already available at maven central.
+
+This version features a [still-experimental gradle plugin](https://github.com/jtransc/jtransc/wiki/Gradle) you can find more information on the wiki.
+
+Also this version, fixes the GDX backend, and now cuboc demo works on HTML5 and C++ targets (windows, linux, mac, android, ios...) out of the box with a single jtransc backend.
+Cuboc now provides a [build.gradle script](https://github.com/jtransc/gdx-backend-jtransc/blob/master/cuboc-demo/build.gradle) that will allow you to package easily for several targets using gradle.
+
+* Fixed a bug in `Float.floatToIntBits` not working property on C++ (getting bits from a double instead of a float) so yielded completely wrong results.
+That was the one causing the GDX black screen on C++ targets.
+* This version also adds the method JTranscSystem.getAllClasses() as [requested here](https://github.com/jtransc/jtransc/issues/37).
+* Added `@JTranscNativeName` annotation to be able to specify a custom name for fields and methods on native classes.
+* Fixed a bug related with native classses + `@JtranscKeepName` + cache.
+* Added experimental `com.jtransc.experimental.Wrapper` typed wrapper for native classes.
+* Added support for 32-bit floats on C++ (could reduce memory size and in some cases improve performance).
+* `gdx-backend-jtransc` now detects android and ios (`Gdx.app.getType()`)
+* `gdx-backend-jtransc` now handles touch events
