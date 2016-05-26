@@ -14,7 +14,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ site.baseurl }}/">JTransc</a>
+          <a href="{{ site.baseurl }}/">JTransc Blog</a>
         </li>
       </ul>
     </div>
@@ -24,9 +24,9 @@
           {% if my_page.enabled == true %}
             {% if my_page.redirect %}
               {% if my_page.redirect %}
-              <li><a class="page-link" href="{{ my_page.redirect }}" target="_blank">{{ my_page.html_title }}</a></li>
+              <li><a class="page-link" href="{{ my_page.redirect }}" title="{{ my_page.title }}" target="_blank">{{ my_page.html_title }}</a></li>
               {% else %}
-              <li><a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.html_title }}</a></li>
+              <li><a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}" title="{{ my_page.title }}">{{ my_page.html_title }}</a></li>
               {% endif %}
             {% endif %}
           {% endif %}
