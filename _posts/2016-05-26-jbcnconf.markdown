@@ -11,4 +11,6 @@ It will be June 16th-18th 2016 at Barcelona.
 
 <!--more-->
 
+<img src="{{ site.baseurl }}/img/jbcnconf/jbcnconf2.jpg" />
+
 <img src="{{ site.baseurl }}/img/jbcnconf/jbcnconf.png" />
