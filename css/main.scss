@@ -29,6 +29,7 @@ $on-palm:          600px;
 $on-laptop:        800px;
 
 
+/*
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -42,13 +43,12 @@ $on-laptop:        800px;
         @content;
     }
 }
-
-
+*/
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout",
+        //"base",
+        //"layout",
         "syntax-highlighting"
 ;
 
@@ -57,9 +57,27 @@ $on-laptop:        800px;
 //  background: linear-gradient(to right, red, yellow); /* Standard syntax */
 //}
 
+/*
 .rssfeed {
   border: 1px solid #ddd;
   color: #777;
   padding: 4px 8px;
   border-radius: 4px;
+}
+*/
+
+#body-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-width: 0;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+code, pre {
+  background: #f7f7f7;
+  border-radius: 0;
+  color: #333;
 }

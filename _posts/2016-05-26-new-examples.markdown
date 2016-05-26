@@ -2,9 +2,10 @@
 layout: post
 title: "New examples repository: #JTransc + #Gradle + #libGDX + #Box2D + #Spine + #Kotlin + #HTML5"
 author: soywiz
+icon: examples/spine_demo.png
 ---
 
-<img src="{{ site.url }}/img/examples/spine_demo.png" width="450" height="450" />
+<img src="{{ site.baseurl }}/img/examples/spine_demo.png" width="450" height="450" />
 
 I have added new libGDX and spine demos to the repository using gradle.
 Also I have created a new repository with example binaries, so you can access an URL and test it yourself.

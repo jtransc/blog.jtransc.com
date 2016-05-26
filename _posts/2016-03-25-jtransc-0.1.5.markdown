@@ -2,6 +2,7 @@
 layout: post
 title:  "JTransc 0.1.5 - Inception, JNA and more!"
 author: soywiz
+icon: 0.1.5/1.png
 ---
 
 I have just released version [0.1.5](https://github.com/jtransc/jtransc/tree/0.1.4). And it is already available at maven central.
@@ -10,15 +11,15 @@ This version allows jtransc to transcompile itself, and transcompiled version (t
 
 <!--more-->
 
-![]({{ site.url }}/img/0.1.5/0.png)
+![]({{ site.baseurl }}/img/0.1.5/0.png)
 
 Furthermore, this version implements Dynamic Proxies and includes initial/partial support for including C++ sources and FFI-JNA.
 
-![]({{ site.url }}/img/0.1.5/1.png)
+![]({{ site.baseurl }}/img/0.1.5/1.png)
 
-![]({{ site.url }}/img/0.1.5/2.png)
+![]({{ site.baseurl }}/img/0.1.5/2.png)
 
-![]({{ site.url }}/img/0.1.5/3.png)
+![]({{ site.baseurl }}/img/0.1.5/3.png)
 
 ## Optimizations
 

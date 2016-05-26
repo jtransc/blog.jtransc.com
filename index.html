@@ -2,54 +2,49 @@
 layout: default
 ---
 
-
 <div class="home">
   <div style="float:right;">
-    <p class="rss-subscribe"><a href="http://feeds.feedburner.com/JtranscBlog" class="rssfeed" target="_blank">RSS</a></p>
+    <a type="button" class="btn btn-success" target="_blank" href="http://feeds.feedburner.com/JtranscBlog">RSS</a>
   </div>
 
   <h1 class="page-heading">Posts</h1>
 
 
-  <ul class="post-list">
+<div class="fluid-layout">
+  <div class="row">
     {% for post in site.posts %}
-      {% assign authorInfo = site.data.authors[post.author] %}
-      <li style="border-bottom: 1px solid #ddd;">
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div style="height:350px;overflow:hidden;border:1px solid #eee;margin:12px 4px;padding: 12px;box-shadow: 10px 10px 20px #fcfcfc;">
+          <h2 style="margin:0;margin-bottom:16px;font-size:1.8em;">
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
 
-        <h2 style="margin:0;">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+          {% include postmeta.html %}
 
-        <div style="margin-bottom:16px;">
-          <span class="post-meta">
-            <span class="post-meta-chunk">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <a href="{{ post.url | prepend: site.baseurl }}">
-                {{ post.date | date: "%b %-d, %Y" }}
-              </a>
-            </span>
-            <span class="post-meta-chunk">
-              <a href="{{ authorInfo.link }}" target="_blank">
-                <img src="{{ authorInfo.avatar }}" style="border-radius:100%;position:relative;top:-2px;" />
-                {{ authorInfo.nick }}
-              </a>
-            </span>
-            <span class="post-meta-chunk">
-              <i class="fa fa-comment-o" aria-hidden="true"></i> <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" class="disqus-comment-count" data-disqus-identifier="{{ post.id }}">0 Comments</a>
-            </span>
-          </span>
+          {% if post.icon %}
+          <div style="
+              height: 80px;
+              background-image: url('{{ site.baseurl }}/img/{{ post.icon }}');
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              margin-bottom:8px;
+          ">
+          </div>
+          {% endif %}
+
+          <p>
+            {{ post.excerpt | strip_html | strip_newlines }}
+          </p>
+          <p>
+            <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a>
+          </p>
         </div>
-
-        <p>
-          {{ post.excerpt | strip_html | strip_newlines }}
-        </p>
-        <p>
-          <a href="{{ post.url | prepend: site.baseurl }}">Read more...</a>
-        </p>
-      </li>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 
+</div>
 </div>
 
 <script id="dsq-count-scr" src="//jtransc.disqus.com/count.js" async></script>

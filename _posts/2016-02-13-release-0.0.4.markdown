@@ -17,4 +17,4 @@ You can grab the [tic-tac-toe demo here](https://github.com/jtransc/jtransc-exam
 
 In order to compile, you must have **maven**, **haxe** and **lime**. You can follow the instructions in `README.md` to compile it.
 
-<iframe src="{{ site.url }}/img/tictactoe-0.0.4/js/index.html" width="640" height="480"></iframe>
+<iframe src="{{ site.baseurl }}/img/tictactoe-0.0.4/js/index.html" width="640" height="480"></iframe>

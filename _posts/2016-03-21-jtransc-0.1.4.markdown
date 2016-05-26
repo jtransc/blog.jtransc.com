@@ -2,6 +2,7 @@
 layout: post
 title:  "JTransc 0.1.4 - Pre-Inception!"
 author: soywiz
+icon: 0.1.4/jtransc-pre-inception.png
 ---
 
 I have just released version [0.1.4](https://github.com/jtransc/jtransc/tree/0.1.4). And it is already available at maven central.
@@ -10,7 +11,7 @@ This version allows jtransc to transcompile itself (it compiles, though still no
 
 <!--more-->
 
-![jtransc-pre-inception]({{ site.url }}/img/0.1.4/jtransc-pre-inception.png)
+![jtransc-pre-inception]({{ site.baseurl }}/img/0.1.4/jtransc-pre-inception.png)
 
 ## Fixes
 

@@ -1,0 +1,19 @@
+{% assign authorInfo = site.data.authors[post.author] %}
+
+<div style="margin-bottom:16px;">
+  <span style="padding-right:16px;white-space: nowrap;">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <a href="{{ post.url | prepend: site.baseurl }}">
+      {{ post.date | date: "%b %-d, %Y" }}
+    </a>
+  </span>
+  <span style="padding-right:16px;white-space: nowrap;">
+    <a href="{{ authorInfo.link }}" target="_blank">
+      <img src="{{ authorInfo.avatar }}" style="border-radius:100%;position:relative;top:-2px;" />
+      {{ authorInfo.nick }}
+    </a>
+  </span>
+  <span style="padding-right:16px;white-space: nowrap;">
+    <i class="fa fa-comment-o" aria-hidden="true"></i> <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" class="disqus-comment-count" data-disqus-identifier="{{ post.id }}">0 Comments</a>
+  </span>
+</div>
