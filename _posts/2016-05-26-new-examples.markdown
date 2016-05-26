@@ -10,7 +10,10 @@ Also I have created a new repository with example binaries, so you can access an
 
 Also I have added the libgdx box2d extension to be used with jtransc.
 
-You can access the repository here: [https://github.com/jtransc/jtransc-examples-binaries](https://github.com/jtransc/jtransc-examples-binaries)
+You can access the repository here:
+
+* Binaries (HTML5): [https://github.com/jtransc/jtransc-examples-binaries](https://github.com/jtransc/jtransc-examples-binaries)
+* Sources: [https://github.com/jtransc/jtransc-examples](https://github.com/jtransc/jtransc-examples)
 
 Available HTML5 examples transcompiled using [JTransc](https://github.com/jtransc/jtransc) and [gdx-backend-jtransc](https://github.com/jtransc/gdx-backend-jtransc)):
 Note that without modifications you can generate C++ native versions for: Windows, Linux , Mac, Android and iOS using jtransc backend (that uses [Haxe](http://haxe.org/) and [Lime](https://github.com/openfl/lime)).
