@@ -25,7 +25,7 @@ Also haxe strings need to be wrapped `HaxeNatives.str` transforms an haxe String
 and `HaxeNatives.toNativeString` for the reversal.
 You can find [`HaxeNatives.hx` here](https://github.com/jtransc/jtransc/blob/0.1.0/jtransc-rt/resources/HaxeNatives.hx), also you can examine generated code to understand the ABI.
 
-![](/img/0.1.0/haxe-method-body.png)
+![]({{ site.url }}/img/0.1.0/haxe-method-body.png)
 
 ## @HaxeRemoveField and @HaxeAddMembers
 
@@ -33,14 +33,14 @@ When creating custom haxe classes, we can use `@HaxeRemoveField` in order to rem
 Also if we need add custom members (fields or methods) to the generated class, we can use `@HaxeAddMembers` annotation.
 This allows to create code that works in java but that have an optimized version in generated haxe code.
 
-![](/img/0.1.0/haxe-remove-field.png)
+![]({{ site.url }}/img/0.1.0/haxe-remove-field.png)
 
 ## @HaxeCustomMain, @HaxeAddFiles and @HaxeAddLibraries
 
 In order to support complex code, we have three more annotations.
 If the class is referenced in your project's working class tree.
 
-![](/img/0.1.0/haxe-link-libraries.png)
+![]({{ site.url }}/img/0.1.0/haxe-link-libraries.png)
 
 ### @HaxeCustomMain
 
@@ -66,7 +66,7 @@ jtransc-media requires you to have a couple of mains.
 One called from plain java, and another compiled when using jtransc.
 You can see a kotlin example here:
 
-![](/img/0.1.0/haxe-several-mains.png)
+![]({{ site.url }}/img/0.1.0/haxe-several-mains.png)
 
 ## New WIP maven plugin to create library definitions
 
@@ -81,7 +81,7 @@ You can see examples using it here:
 
 This is a WIP, but already generates valid jar files so you can see haxe classes, enums, abstracts and interfaces from java.
 
-![](/img/0.1.0/lime-imports.png)
+![]({{ site.url }}/img/0.1.0/lime-imports.png)
 
 And that's it.
 Generated code is still pretty preliminary in terms of size and quality.

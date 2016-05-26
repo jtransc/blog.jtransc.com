@@ -10,7 +10,7 @@ This version allows jtransc to transcompile itself (it compiles, though still no
 
 <!--more-->
 
-![jtransc-pre-inception](/img/0.1.4/jtransc-pre-inception.png)
+![jtransc-pre-inception]({{ site.url }}/img/0.1.4/jtransc-pre-inception.png)
 
 ## Fixes
 

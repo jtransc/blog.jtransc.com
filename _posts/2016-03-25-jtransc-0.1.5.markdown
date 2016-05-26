@@ -10,15 +10,15 @@ This version allows jtransc to transcompile itself, and transcompiled version (t
 
 <!--more-->
 
-![](/img/0.1.5/0.png)
+![]({{ site.url }}/img/0.1.5/0.png)
 
 Furthermore, this version implements Dynamic Proxies and includes initial/partial support for including C++ sources and FFI-JNA.
 
-![](/img/0.1.5/1.png)
+![]({{ site.url }}/img/0.1.5/1.png)
 
-![](/img/0.1.5/2.png)
+![]({{ site.url }}/img/0.1.5/2.png)
 
-![](/img/0.1.5/3.png)
+![]({{ site.url }}/img/0.1.5/3.png)
 
 ## Optimizations
 
