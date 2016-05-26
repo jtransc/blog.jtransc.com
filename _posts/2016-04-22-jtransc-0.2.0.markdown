@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "JTransc 0.2.0 - ASM backend and optimization!"
+author: soywiz
 ---
 
 I have just released version [0.2.0](https://github.com/jtransc/jtransc/tree/0.2.0). And it is already available at maven central.

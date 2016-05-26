@@ -1,11 +1,33 @@
 ---
 layout: default
 ---
+
+{% assign authorInfo = site.data.authors[page.author] %}
+
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <p class="post-meta">
+      <span class="post-meta-chunk">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          <i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+        </a>
+      </span>
+      {% if page.author %}
+      <span class="post-meta-chunk">
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a href="{{ authorInfo.link }}" target="_blank">
+            <img src="{{ authorInfo.avatar }}" style="border-radius:100%;position:relative;top:-2px;" />
+            {{ authorInfo.nick }}
+          </a>
+        </span>
+      </span>
+      {% endif %}
+      <span class="post-meta-chunk">
+        <i class="fa fa-comment-o" aria-hidden="true"></i> <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" class="disqus-comment-count" data-disqus-identifier="{{ post.id }}">0 Comments</a>
+      </span>
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">

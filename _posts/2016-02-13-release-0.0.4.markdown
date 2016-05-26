@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "JTransc 0.0.4"
+author: soywiz
 ---
 
 I have just released version [0.0.4](https://github.com/jtransc/jtransc/tree/0.0.4). And it will be soon at maven central.

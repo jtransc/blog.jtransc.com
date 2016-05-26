@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "JTransc 0.1.4 - Pre-Inception!"
+author: soywiz
 ---
 
 I have just released version [0.1.4](https://github.com/jtransc/jtransc/tree/0.1.4). And it is already available at maven central.

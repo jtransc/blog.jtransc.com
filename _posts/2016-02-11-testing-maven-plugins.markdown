@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Testing maven plugins"
+author: soywiz
 ---
 
 JTransc has a maven plugin that hooks the package maven phase and transcompiles

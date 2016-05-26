@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "New examples repository: #JTransc + #Gradle + #libGDX + #Box2D + #Spine + #Kotlin + #HTML5"
+author: soywiz
 ---
 
 <img src="/img/examples/spine_demo.png" width="450" height="450" />

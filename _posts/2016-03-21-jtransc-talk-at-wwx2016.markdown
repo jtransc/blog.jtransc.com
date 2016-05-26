@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "JTransc talk at WWX2016"
+author: soywiz
 ---
 
 ![wwx2016](/img/wwx/wwx2016.jpg)
