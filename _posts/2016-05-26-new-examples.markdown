@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "New examples repository: #JTransc + #Gradle + #Libgdx + #Box2D + #Spine + #Kotlin + #HTML5"
+title: "New examples repository: #JTransc + #Gradle + #libGDX + #Box2D + #Spine + #Kotlin + #HTML5"
 ---
 
 <img src="/img/examples/spine_demo.png" width="450" height="450" />
 
-I have added new libgdx and spine demos to the repository using gradle.
+I have added new libGDX and spine demos to the repository using gradle.
 Also I have created a new repository with example binaries, so you can access an URL and test it yourself.
 
-Also I have added the libgdx box2d extension to be used with jtransc.
+Also I have added the libGDX box2d extension to be used with jtransc.
 
 You can access the repository here:
 
@@ -18,10 +18,10 @@ You can access the repository here:
 Available HTML5 examples transcompiled using [JTransc](https://github.com/jtransc/jtransc) and [gdx-backend-jtransc](https://github.com/jtransc/gdx-backend-jtransc)):
 Note that without modifications you can generate C++ native versions for: Windows, Linux , Mac, Android and iOS using jtransc backend (that uses [Haxe](http://haxe.org/) and [Lime](https://github.com/openfl/lime)).
 
-* **[Libgdx Cuboc Demo](http://jtransc.github.io/jtransc-examples-binaries/cuboc/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/libgdx/cuboc)
-* **[Libgdx Vector Pinball Demo (Box2D)](http://jtransc.github.io/jtransc-examples-binaries/vector-pinball/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/libgdx/vector-pinball)
-* **[Spine+Libgdx Demo 1](http://jtransc.github.io/jtransc-examples-binaries/spine1/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/spine-demo)
-* **[Spine+Libgdx Demo 2](http://jtransc.github.io/jtransc-examples-binaries/spine2/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/spine-demo)
+* **[libGDX Cuboc Demo](http://jtransc.github.io/jtransc-examples-binaries/cuboc/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/libgdx/cuboc)
+* **[libGDX Vector Pinball Demo (Box2D)](http://jtransc.github.io/jtransc-examples-binaries/vector-pinball/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/libgdx/vector-pinball)
+* **[Spine+libGDX Demo 1](http://jtransc.github.io/jtransc-examples-binaries/spine1/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/spine-demo)
+* **[Spine+libGDX Demo 2](http://jtransc.github.io/jtransc-examples-binaries/spine2/index.html)** - [(Source Code)](https://github.com/jtransc/jtransc-examples/tree/master/spine-demo)
 
 <iframe src="http://jtransc.github.io/jtransc-examples-binaries/spine1/index.html" width="450" height="450" style="border:0;"></iframe>
 
@@ -39,7 +39,7 @@ Right now performance is not the best in class, but that will improve in future 
 ## How does it work?
 
 There is a plugin to use jtransc with gradle. You just include it.
-Later you define all your dependencies as if it was going to be libgdx for desktop (using lwjgl).
+Later you define all your dependencies as if it was going to be libGDX for desktop (using lwjgl).
 But there is a configuration called "jtransc" instead of "compile" that is prepended just when using JTransc.
 So all the classes defined in jtransc will have priority over later ones. So one single build.gradle.
 And one single source folder, and one single assets folder.
