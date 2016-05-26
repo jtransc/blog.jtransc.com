@@ -2,6 +2,7 @@
 layout: post
 title:  "First sonatype release"
 author: soywiz
+icon: sonatype.png
 ---
 
 I have finally created a non-snapshot version of jtransc.

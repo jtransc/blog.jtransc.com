@@ -2,6 +2,7 @@
 layout: post
 title:  "JTransc at Slack and Google Groups"
 author: soywiz
+icon: slack.svg
 ---
 
 I have created a [slack team chat](https://jtransc.slack.com/) and a [google groups forum](https://groups.google.com/forum/#!forum/jtransc).

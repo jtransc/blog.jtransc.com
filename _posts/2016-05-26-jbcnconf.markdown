@@ -6,7 +6,8 @@ icon: jbcnconf/jbcnconf.png
 ---
 
 I will go to [JBCNConf 2016](http://www.jbcnconf.com/2016/infoSpeaker.html?ref=cballesteros) to talk about JTransc.
-June 16th-18th 2016 Barcelona
+
+It will be June 16th-18th 2016 at Barcelona.
 
 <!--more-->
 

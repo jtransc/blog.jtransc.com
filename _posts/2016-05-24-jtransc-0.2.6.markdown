@@ -2,6 +2,7 @@
 layout: post
 title:  "JTransc 0.2.6 - Gradle support and fixed gdx backend"
 author: soywiz
+icon: gradle.svg
 ---
 
 I have just released version [0.2.6](https://github.com/jtransc/jtransc/tree/0.2.6). And it is already available at maven central.

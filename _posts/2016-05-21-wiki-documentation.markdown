@@ -2,6 +2,7 @@
 layout: post
 title:  "JTransc Wiki with documentation"
 author: soywiz
+icon: documentation.jpg
 ---
 
 I have just added a wiki for JTransc with the project documentation and examples.
