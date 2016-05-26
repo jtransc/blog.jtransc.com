@@ -47,7 +47,7 @@ But there is a configuration called "jtransc" instead of "compile" that is prepe
 So all the classes defined in jtransc will have priority over later ones. So one single build.gradle.
 And one single source folder, and one single assets folder.
 
-{% highlight gradle %}
+{% highlight groovy %}
 buildscript {
   repositories {
     mavenLocal()
@@ -72,7 +72,7 @@ dependencies {
 
 Then you can configure jtransc itself (application configuration and jtransc specific stuff):
 
-{% highlight gradle %}
+{% highlight groovy %}
 jtransc {
   // Optional properties (https://github.com/jtransc/jtransc/blob/master/jtransc-gradle-plugin/src/com/jtransc/gradle/JTranscExtension.kt)
   title = "Vector Pinball"
