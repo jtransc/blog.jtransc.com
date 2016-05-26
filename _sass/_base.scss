@@ -91,11 +91,11 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: #004;
+    color: #006;
     text-decoration: none;
 
     &:visited {
-        color: #005;
+        color: #008;
     }
 
     &:hover {
@@ -211,4 +211,10 @@ pre {
 
 a.post-link {
   margin-bottom:8px;
+}
+
+.post-title {
+  a {
+    color: black;
+  }
 }

@@ -23,8 +23,9 @@ layout: default
         <div style="margin-bottom:16px;">
           <span class="post-meta">
             <span class="post-meta-chunk">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
               <a href="{{ post.url | prepend: site.baseurl }}">
-                <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%b %-d, %Y" }}
+                {{ post.date | date: "%b %-d, %Y" }}
               </a>
             </span>
             <span class="post-meta-chunk">
