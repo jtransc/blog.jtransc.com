@@ -5,6 +5,8 @@ title:  "JTransc 0.1.3"
 
 I have just released version [0.1.3](https://github.com/jtransc/jtransc/tree/0.1.3). And it is already available at maven central.
 
+<!--more-->
+
 ## Fixes
 
 * `Objects.equals` and `Objects.hashCode`.

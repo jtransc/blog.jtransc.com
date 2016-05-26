@@ -5,6 +5,8 @@ title:  "JTransc 0.0.4"
 
 I have just released version [0.0.4](https://github.com/jtransc/jtransc/tree/0.0.4). And it will be soon at maven central.
 
+<!--more-->
+
 This version improves jtransc-game and adds mouse and key events.
 Along with this version I have included a working tic-tac-toe very simple game made using kotlin.
 That I have tested on **html5**, **flash** and **android c++** (and should work on **ios** too).

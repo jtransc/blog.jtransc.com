@@ -5,6 +5,8 @@ title:  "JTransc 0.1.2"
 
 I have just released version [0.1.2](https://github.com/jtransc/jtransc/tree/0.1.2). And it is already available at maven central.
 
+<!--more-->
+
 ## Fixes
 
 * Fixed casting negative integers to longs.

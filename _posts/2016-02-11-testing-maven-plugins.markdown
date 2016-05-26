@@ -9,6 +9,8 @@ wanted to debug easily on intelliJ. It ended being pretty easy.
 
 Instead of calling `mvn` command, there is a `mvnDebug` command:
 
+<!--more-->
+
 {% highlight xml %}
 mvnDebug package
 {% endhighlight %}

@@ -7,6 +7,8 @@ I have just released version [0.2.5](https://github.com/jtransc/jtransc/tree/0.2
 
 There have been several versions in between: *0.2.1*, *0.2.2*, *0.2.3* and *0.2.4*.
 
+<!--more-->
+
 ## JTransc gdx backend preview uploaded to maven central
 
 I have uploaded gdx backend to maven central. It is now to just work on javascript for now (C++ versions will display a black screen). I will probably fix this in next version.

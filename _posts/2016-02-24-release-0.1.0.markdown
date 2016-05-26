@@ -5,6 +5,8 @@ title:  "JTransc 0.1.0 and new annotations"
 
 I have just released version [0.1.0](https://github.com/jtransc/jtransc/tree/0.1.0). And it will be soon at maven central.
 
+<!--more-->
+
 This version decouples media library from core to the optional library [jtransc-media](https://github.com/jtransc/jtransc-media).
 Also enables partial haxe interoperability and has lots of cleanups and simplifications.
 Now there are no hardcoded haxe mappings anywhere (replacements of java functions from haxe functions) so it is more extensible
@@ -83,5 +85,3 @@ This is a WIP, but already generates valid jar files so you can see haxe classes
 And that's it.
 Generated code is still pretty preliminary in terms of size and quality.
 But still a great step.
-
-

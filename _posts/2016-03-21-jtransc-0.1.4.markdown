@@ -7,6 +7,8 @@ I have just released version [0.1.4](https://github.com/jtransc/jtransc/tree/0.1
 
 This version allows jtransc to transcompile itself (it compiles, though still not fully working; can't make two levels of inception).
 
+<!--more-->
+
 ![jtransc-pre-inception](/img/0.1.4/jtransc-pre-inception.png)
 
 ## Fixes

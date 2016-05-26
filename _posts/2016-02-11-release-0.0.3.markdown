@@ -5,5 +5,7 @@ title:  "JTransc 0.0.3"
 
 I have just released version [0.0.3](https://github.com/jtransc/jtransc/tree/0.0.3). And it will be soon at maven central.
 
+<!--more-->
+
 This version has a few minor modifications and in your `pom.xml` you won't have
 to add `jtransc-rt` as dependency, because the maven plugin now resolves it for you.

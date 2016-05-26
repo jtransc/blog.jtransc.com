@@ -7,6 +7,8 @@ I have just released version [0.2.6](https://github.com/jtransc/jtransc/tree/0.2
 
 This version features a [still-experimental gradle plugin](https://github.com/jtransc/jtransc/wiki/Gradle) you can find more information on the wiki.
 
+<!--more-->
+
 Also this version, fixes the GDX backend, and now cuboc demo works on HTML5 and C++ targets (windows, linux, mac, android, ios...) out of the box with a single jtransc backend.
 Cuboc now provides a [build.gradle script](https://github.com/jtransc/gdx-backend-jtransc/blob/master/cuboc-demo/build.gradle) that will allow you to package easily for several targets using gradle.
 

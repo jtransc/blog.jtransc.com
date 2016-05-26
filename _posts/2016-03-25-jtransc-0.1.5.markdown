@@ -7,6 +7,8 @@ I have just released version [0.1.5](https://github.com/jtransc/jtransc/tree/0.1
 
 This version allows jtransc to transcompile itself, and transcompiled version (tested with c++ and javascript works and are able to compile other stuff).
 
+<!--more-->
+
 ![](/img/0.1.5/0.png)
 
 Furthermore, this version implements Dynamic Proxies and includes initial/partial support for including C++ sources and FFI-JNA.

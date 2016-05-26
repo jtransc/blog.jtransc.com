@@ -8,6 +8,8 @@ title: "New examples repository: #JTransc + #Gradle + #libGDX + #Box2D + #Spine 
 I have added new libGDX and spine demos to the repository using gradle.
 Also I have created a new repository with example binaries, so you can access an URL and test it yourself.
 
+<!--more-->
+
 Also I have added the libGDX box2d extension to be used with jtransc.
 
 You can access the repository here:

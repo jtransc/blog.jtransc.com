@@ -8,6 +8,8 @@ First release version is 0.0.1.
 
 [You can find it here](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jtransc%22l)
 
+<!--more-->
+
 Uploading releases to sonatype requires several steps.
 
 And I'm going to document them so other people can benefit from what I have learned
