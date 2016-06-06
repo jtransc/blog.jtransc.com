@@ -13,4 +13,4 @@ It is a conversion of the previous wiki to jekyll. You can access the documentat
 * The new documentation: [http://docs.jtransc.com/](http://docs.jtransc.com/)
 * Linked github repository: [http://github.com/jtransc/jtransc](http://github.com/jtransc/jtransc).
 
-![new jtransc documentation]({{ site.baseurl }}/img/new_jtransc_documentation.jpg)
+![new jtransc documentation]({{ site.baseurl }}/img/new_jtransc_documentation.png)
